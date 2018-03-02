@@ -1,20 +1,28 @@
 package com.ivson.festa.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class Convidado {
+@Table(name = "convidado", schema="topicos")
+public class Convidado implements Serializable {
+
+	private static final long serialVersionUID = -3009157732242241606L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotEmpty
+	@Column(name = "nome")
 	private String nome;
 
 	public Long getId() {
@@ -27,6 +35,19 @@ public class Convidado {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	protected Convidado() {
+	}
+
+	public Convidado(Long id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
 	}
 
 	@Override
@@ -54,9 +75,4 @@ public class Convidado {
 		return true;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	
 }
