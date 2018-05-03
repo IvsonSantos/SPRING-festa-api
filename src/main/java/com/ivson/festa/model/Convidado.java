@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "convidado", schema="topicos")
+@Table(name = "convidado")
 public class Convidado implements Serializable {
 
 	private static final long serialVersionUID = -3009157732242241606L;
@@ -24,6 +24,8 @@ public class Convidado implements Serializable {
 	@NotEmpty
 	@Column(name = "nome")
 	private String nome;
+	
+	private String email;
 
 	public Long getId() {
 		return id;
@@ -44,10 +46,11 @@ public class Convidado implements Serializable {
 	protected Convidado() {
 	}
 
-	public Convidado(Long id, String nome) {
+	public Convidado(Long id, String nome, String email) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.email = email;
 	}
 
 	@Override
@@ -73,6 +76,14 @@ public class Convidado implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

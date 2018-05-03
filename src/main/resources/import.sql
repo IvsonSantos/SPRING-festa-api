@@ -1,0 +1,1 @@
+insert into convidado (nome, email) values ('Joao', 'a@b.c'), ('Maria', 'a@b.c'), ('Pedro', 'a@b.c');
